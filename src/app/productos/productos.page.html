@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="productos.length > 0">
+          <ion-item *ngFor="let producto of productos">
+            <ion-avatar slot="start">
+              <img [src]="producto.thumbnail" alt="Imagen del producto" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ producto.title }}</h2>
+              <p>{{ producto.price | currency }}</p>
+              <p>{{ producto.discountPercentage }}%</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-text *ngIf="productos.length === 0" color="medium">
+          <p>No hay productos disponibles.</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="cargarMasProductos($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más productos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

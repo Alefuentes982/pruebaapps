@@ -1,0 +1,7 @@
+{
+  "name": "elproblemanoeselbackend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
